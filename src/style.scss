@@ -1,0 +1,103 @@
+@mixin font-face($src,$name) {
+  @font-face {
+    font-family: #{$name};
+    src: url('./assets/fonts/#{$src}.eot');
+    src: url('./assets/fonts/#{$src}.eot?#iefix') format('embedded-opentype'),
+    url('./assets/fonts/#{$src}.woff') format('woff'),
+    url('./assets/fonts/#{$src}.ttf') format('truetype'),
+  }
+}
+
+@include font-face('roboto', Roboto);
+
+body {
+  background-color: blue;
+  font-family: Roboto;
+  margin: 0;
+  padding: 0;
+}
+
+.page {
+  position: relative;
+  text-align: center;
+
+  &__logo {
+    padding-top: 10px;
+
+    img {
+      max-width: 200px;
+      height: auto;
+    }
+  }
+
+  &__search {
+    padding-top: 10px;
+  }
+
+  &__error {
+    position: absolute;
+    padding: 5px;
+    color: #fff;
+    background-color: #f44336;
+    transition: 0.5s;
+    transform: scale(1);
+  }
+}
+
+.pokemons {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: inline-flex;
+    margin: 10px;
+  }
+}
+
+.pokemon {
+  position: relative;
+  z-index: 20000;
+  overflow: hidden;
+  background-color: #eee;
+  cursor: pointer;
+
+  &__sprite {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+    border: none;
+    background-color: transparent;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  &,
+  &__sprite {
+    width: 140px;
+    height: 140px;
+
+    @media (min-width: 992px) {
+      width: 160px;
+      height: 160px;
+    }
+  }
+
+  &__name {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 20;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    pointer-events: none;
+  }
+}
+
